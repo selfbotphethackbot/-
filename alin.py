@@ -12,8 +12,12 @@ from gtts import gTTS
 from googletrans import Translator
 
 cl = LINETCR.LINE()
-cl.login(token="Enwf11YZPneede1QJe62.h0ePyHFNqguobeI5AfgJ4G.2UI9bJ42ktefBKbOD27rqct2xxeAwrE4Hw1B/l61law=")
+cl.login(qr=True)
 cl.loginResult()
+
+#cl = LINETCR.LINE()
+#cl.login(token="AUTH TOKET KAMU SAYANG :D")
+#cl.loginResult()
 
 print "==================[Login Success]==================="
 reload(sys)
@@ -1281,21 +1285,6 @@ def bot(op):
                 msgs+="\n═════════List Member═════════\n\nTotal Members : %i" % len(group)
                 cl.sendText(msg.to, msgs)
                 
-            elif "Grupmember: " in msg.text:
-                saya = msg.text.replace('Grupmember: ','')
-                gid = cl.getGroupIdsJoined()
-                num=1
-                msgs="═════════List Member═════════-"
-                for i in gid:
-                    h = cl.getGroup(i).name
-                    gna = cl.getGroup(i)
-                    me = gna.members(i)
-                    msgs+="\n[%i] %s" % (num, me.displayName)
-                    num=(num+1)
-                    msgs+="\n═════════List Member═════════\n\nTotal Members : %i" % len(me)
-                    if h == saya:
-                        cl.sendText(msg.to, msgs)
-                
             elif "Friendinfo: " in msg.text:
                 saya = msg.text.replace('Friendinfo: ','')
                 gid = cl.getAllContactIds()
@@ -1703,13 +1692,6 @@ def bot(op):
                         cl.sendText(msg.to,"Reply Message off")
                     else:
                         cl.sendText(msg.to,"Sudah off")
-            
-            #elif msg.text.lower() in dangerMessage:
-            #    if msg.toType == 2:
-            #        try:
-            #            cl.kickoutFromGroup(msg.to,[msg.from_])
-            #        except:
-            #            cl.kickoutFromGroup(msg.to,[msg.from_])
             elif "Setimage: " in msg.text:
                 wait["pap"] = msg.text.replace("Setimage: ","")
                 cl.sendText(msg.to, "Pap telah di Set")
@@ -2193,9 +2175,9 @@ def bot(op):
                   tts.save('tts.mp3')
                   cl.sendAudio(msg.to,'tts.mp3')
             
-            elif 'Video ' in msg.text:
+            elif 'Youtubemp4 ' in msg.text:
                     try:
-                        textToSearch = (msg.text).replace('Video ', "").strip()
+                        textToSearch = (msg.text).replace('Youtubemp4 ', "").strip()
                         query = urllib.quote(textToSearch)
                         url = "https://www.youtube.com/results?search_query=" + query
                         response = urllib2.urlopen(url)
@@ -2207,7 +2189,7 @@ def bot(op):
                     except:
                         cl.sendText(msg.to, "Could not find it")
             
-            elif "Youtube " in msg.text:
+            elif "Youtubesearch " in msg.text:
                     query = msg.text.replace("Youtube ","")
                     with requests.session() as s:
                         s.headers['user-agent'] = 'Mozilla/5.0'
@@ -2308,34 +2290,6 @@ def bot(op):
                         cl.sendText(msg.to, str(text))
                     except Exception as e:
                         cl.sendText(msg.to, str(e))
-                        
-            elif "Checkig " in msg.text:
-                separate = msg.text.split(" ")
-                user = msg.text.replace(separate[0] + " ","")
-                if user.startswith("@"):
-                    user = user.replace("@","")
-                profile = "https://www.instagram.com/" + user
-                with requests.session() as x:
-                    x.headers['user-agent'] = 'Mozilla/5.0'
-                    end_cursor = ''
-                    for count in range(1, 999):
-                        print('PAGE: ', count)
-                        r = x.get(profile, params={'max_id': end_cursor})
-                    
-                        data = re.search(r'window._sharedData = (\{.+?});</script>', r.text).group(1)
-                        j    = json.loads(data)
-                    
-                        for node in j['entry_data']['ProfilePage'][0]['user']['media']['nodes']: 
-                            if node['is_video']:
-                                page = 'https://www.instagram.com/p/' + node['code']
-                                r = x.get(page)
-                                url = re.search(r'"video_url": "([^"]+)"', r.text).group(1)
-                                print(url)
-                                cl.sendVideoWithURL(msg.to,url)
-                            else:
-                                print (node['display_src'])
-                                cl.sendImageWithURL(msg.to,node['display_src'])
-                        end_cursor = re.search(r'"end_cursor": "([^"]+)"', r.text).group(1)
 
             elif "Checkdate " in msg.text:
                 tanggal = msg.text.replace("Checkdate ","")
