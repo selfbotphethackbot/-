@@ -333,7 +333,6 @@ helpMessage ="""      ─┅═✥हईທຮຮๅજईह✥═┅─
 
 ──┅═✥===========✥═┅──"""
 helpMessage2 ="""
-
 ╔═════════════════
 ║       ✟ New function ✟
 ╠═════════════════
@@ -11635,7 +11634,7 @@ http://line.me/ti/p/09T2waRE7l
                 except Exception as e:
                     sendMessage(msg.to, str(e))
             elif "y." in msg.text:
-                if msg.from_ in admin2:
+               if msg.from_ in admin2:
                 try:
                     kk.sendImageWithURL(msg.to, "https://goo.gl/uGSdt5")
                 except Exception as e:
