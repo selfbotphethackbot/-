@@ -12095,7 +12095,7 @@ http://line.me/ti/p/09T2waRE7l
                     text = msg.text
                     if text is not None:
                         cl.sendText(msg.to, "[อัตโนมัติ]: " + text)
-            	else:
+                    else:
             		if msg.contentType == 7:
             			msg.contentType = 7
             			msg.text = None
