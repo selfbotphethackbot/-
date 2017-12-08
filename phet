@@ -12091,16 +12091,6 @@ http://line.me/ti/p/09T2waRE7l
                     text = msg.text
                     if text is not None:
                         cl.sendText(msg.to, "[อัตโนมัติ]: " + text)
-            	else:
-            		if msg.contentType == 7:
-            			msg.contentType = 7
-            			msg.text = None
-            			msg.contentMetadata = {
-            							 	 "STKID": "6",
-            							 	 "STKPKGID": "1",
-            							 	 "STKVER": "100" }
-            			cl.sendMessage(msg)
-
         if op.type == 15:
             if wait["Notifed"] == True:
                 if op.param2 in Bots:
