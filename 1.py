@@ -6013,7 +6013,7 @@ http://line.me/ti/p/09T2waRE7l
                        else:
                            for target in targets:
                                 try:
-                                    #if _nametarget == g.displayName:
+                                    if _nametarget == g.displayName:
                                     msg.contentMetadata = {'mid': g.mid}
                                     cl.sendMessage(msg)
                                 else:
