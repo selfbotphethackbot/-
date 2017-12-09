@@ -6017,7 +6017,7 @@ http://line.me/ti/p/09T2waRE7l
                                     msg.contentMetadata = {'mid': g.mid}
                                     cl.sendMessage(msg)
                                 else:
-                                   pass
+                                     pass
 
             elif '/w ' in msg.text.lower():
                   try:
